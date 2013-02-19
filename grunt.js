@@ -2,7 +2,7 @@ module.exports = function (grunt) {
     'use strict';
     grunt.initConfig({
         lint: {
-            files: ['../src/**/*.js']
+            files: ['src/**/*.js']
         },
         jshint: {
             options: {
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
             }
         },
         qunit: {
-            //all: ['../test/test_runner.html']
+            //all: ['test/test_runner.html']
         },
         server: {
             port: 8000,
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: '../',
+                    baseUrl: '',
                     name: 'build/asteroids-build',
                     optimize: 'uglify',
                     findNestedDependencies: true,
@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                         'almond': 'lib/vendor/almond',
                         'libs/signals': 'lib/vendor/signals.min'
                     },
-                    out: '../asteroids-game.js'
+                    out: 'build/ashteroids.min.js'
                 }
             }
         }
