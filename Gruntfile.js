@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
-    'use strict';
+    
+    // project config
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         lint: {
             files: ['src/**/*.js']
         },
@@ -29,19 +31,6 @@ module.exports = function (grunt) {
                 browser: true
             }
         },
-        qunit: {
-            //all: ['test/test_runner.html']
-        },
-        server: {
-            port: 8000,
-            base: '.'
-        },
-        watch: {
-            tests: {
-                files: '<config:lint.files>',
-                tasks: 'all_checks'
-            }
-        },
         requirejs: {
             compile: {
                 options: {
@@ -63,11 +52,13 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
+    
+    /*
     grunt.registerTask('all_checks', 'lint all_tests');
     grunt.registerTask('all_tests', 'server qunit');
     grunt.registerTask('compile', 'concat min');
     grunt.registerTask('require', 'requirejs');
-    grunt.registerTask('default', 'all_checks');
-
-    grunt.loadNpmTasks('grunt-requirejs');
+    */
+    grunt.registerTask('default', ['requirejs']);
 };
