@@ -1,5 +1,5 @@
 {
-    "name": "ashjs-ashteroids",
+    "name": "ashteroids",
     "version": "0.1.0",
     "description": "Example game using Ash framework & CreateJS",
     "private": true,

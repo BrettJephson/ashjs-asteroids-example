@@ -46,7 +46,7 @@ module.exports = function (grunt) {
                         'almond': 'lib/vendor/almond',
                         'libs/signals': 'lib/vendor/signals.min'
                     },
-                    out: 'build/ashteroids.min.js'
+                    out: 'build/<%= pkg.name %>.min.js'
                 }
             }
         }
