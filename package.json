@@ -1,5 +1,6 @@
 {
-  "name": "Ash JS Asteroids Demo",
+  "name": "ashjs-asteroids",
+  "descriptiont": "Ash JS Asteroids Demo",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.0",
