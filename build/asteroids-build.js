@@ -1,6 +1,6 @@
 require(["require"], function (require) {
     require([
-        "libs/ash",
+        "lib/ash/ash.require",
         "brejep/keypoll",
         "brejep/tickprovider",
         "game/asteroids",
@@ -34,6 +34,6 @@ require(["require"], function (require) {
         "game/components/motioncontrols",
         "game/components/position",
         "game/components/spaceship",
-        "asteroids-app"
+        "src/asteroids-app"
     ]);
 });

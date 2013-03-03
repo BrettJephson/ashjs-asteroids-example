@@ -6,4 +6,4 @@ define( "game/systems/systempriorities",
         resolveCollisions : 4,
         render : 5
     }
-)
+);

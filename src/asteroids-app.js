@@ -16,7 +16,7 @@ define( 'asteroids-app', ["brejep/fillsnfixes", "game/asteroids"],
                 var asteroids = new Asteroids();
                 asteroids.initialise( canvasElem );
                 asteroids.start();
-            }
+            };
 
             function createCanvas() {
                 var canvasElem = document.createElement( "canvas" );

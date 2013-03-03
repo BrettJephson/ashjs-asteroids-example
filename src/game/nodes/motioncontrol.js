@@ -3,7 +3,7 @@ define( "game/nodes/motioncontrol",
     function( Node, MotionControls, Position, Motion ) {
         function MotionControl() {
             Object.extend( MotionControl.prototype, Node.prototype );
-        };
+        }
         MotionControl.prototype.control = null;
         MotionControl.prototype.position = null;
         MotionControl.prototype.motion = null;

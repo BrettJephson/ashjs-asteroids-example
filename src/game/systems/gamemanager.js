@@ -67,12 +67,13 @@ define( "game/systems/gamemanager",
                 var spaceship = this.spaceships.head;
                 this.gameState.level++;
                 var asteroidCount = 2 + this.gameState.level;
+                var position;
                 for( var i = 0; i < asteroidCount; ++i )
                 {
                     // check not on top of spaceship
                     do
                     {
-                        var position = new Point( 
+                        position = new Point( 
                             Math.random() * this.gameState.width, 
                             Math.random() * this.gameState.height 
                         );

@@ -4,7 +4,7 @@ define( "game/systems/rendersystem",
         function RenderSystem( graphicsContext ) {
             Object.extend( RenderSystem.prototype, System.prototype );
             this.initialise( graphicsContext );
-        };
+        }
         var api = RenderSystem.prototype;
         api.context = null;
         api.nodes = null;
