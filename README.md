@@ -1,4 +1,7 @@
-ashjs-asteroids-example
-=======================
+# ashteroids.js
+Ash.js example game
 
-Ash JS asteroids example
+## Setup for build
+- make sure `grunt-cli` & `grunt-init` is installed globally using `npm install -g`
+- execute `grunt`
+
