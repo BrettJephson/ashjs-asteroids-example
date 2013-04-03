@@ -1,15 +1,16 @@
-define( "game/nodes/render",
-    [ "ash/node", "game/components/position", "game/components/display" ],
-    function( Node, Position, Display ) {
-        function Render() {
-            Object.extend( Render.prototype, Node.prototype );
-        }
-        Render.prototype.position = null;
-        Render.prototype.display = null;
-        Render.prototype.types = {
+define([
+    'ash', 'game/components/position', 'game/components/display'
+], function (Ash, Position, Display ) {
+    var Render = Ash.Node.extend({
+        position: null,
+        display: null,
+        types: {
             position : Position,
             display : Display
-        };
-        return Render;
-    }
-);
+        },
+
+        constructor: function () { }
+    });
+
+    return Render;
+});
