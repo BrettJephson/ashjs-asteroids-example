@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
         jshint: {
             files: [
-                'Gruntfile.js', 'build.js', 'build.min.js',
+                'Gruntfile.js', 'build.js',
                 'src/**/*.js'
             ],
             options: {
@@ -20,19 +20,7 @@ module.exports = function (grunt) {
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: '',
-                    name: 'build/asteroids-build',
-                    optimize: 'uglify',
-                    findNestedDependencies: true,
-                    paths: {
-                        'libs/ash': 'lib/ash/ash.require',
-                        'asteroids-app': 'src/asteroids-app',
-                        'game': 'src/game',
-                        'brejep': 'lib/brejep',
-                        'almond': 'lib/vendor/almond',
-                        'libs/signals': 'lib/vendor/signals.min'
-                    },
-                    out: 'build/<%= pkg.name %>.min.js'
+                    mainConfigFile: "build.js"
                 }
             }
         },
@@ -53,12 +41,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-connect');
-
-    /*
-    grunt.registerTask('all_checks', 'lint all_tests');
-    grunt.registerTask('all_tests', 'server qunit');
-    grunt.registerTask('compile', 'concat min');
-    grunt.registerTask('require', 'requirejs');
-    */
     grunt.registerTask('default', ['requirejs']);
 };
