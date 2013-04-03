@@ -1,8 +1,9 @@
-define( "game/components/display",
-    function() {
-        function Display( graphic ) {
+define(['ash'], function (Ash) {
+    var Display = Ash.Class.extend({
+        constructor: function (graphic) {
             this.graphic = graphic;
         }
-        return Display;
-    }
-);
+    });
+
+    return Bullet;
+});

@@ -1,6 +1,7 @@
-define( "game/components/asteroid",
-    function() {
-        function Asteroid() {}
-        return Asteroid;
-    }
-);
+define(['ash'], function (Ash) {
+    var Asteroid = Ash.Class.extend({
+        constructor: function () { }
+    });
+
+    return Asteroid;
+});
