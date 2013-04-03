@@ -1,36 +1,22 @@
 module.exports = function (grunt) {
-    
+
     // project config
     grunt.initConfig({
+        // get metadata from package
         pkg: grunt.file.readJSON('package.json'),
-        lint: {
-            files: ['src/**/*.js']
-        },
+
         jshint: {
+            files: [
+                'Gruntfile.js', 'build.js', 'build.min.js',
+                'src/**/*.js'
+            ],
             options: {
-                curly: true,
-                eqeqeq: true,
-                indent: 4,
-                camelcase: true,
-                latedef: true,
-                newcap: true,
-                noarg: true,
-                noempty: true,
-                nonew: true,
-                quotmark: true,
-                undef: true,
-                unused: true,
-                strict: true,
-                trailing: true,
-                maxparams: 3,
-                maxdepth: 2,
-                maxstatements: 5,
-                maxcomplexity: 5,
-                maxlen: 180,
-                devel: true,
-                browser: true
+                browser: true,
+                white: false
             }
         },
+
+        // requirejs config
         requirejs: {
             compile: {
                 options: {
@@ -49,11 +35,25 @@ module.exports = function (grunt) {
                     out: 'build/<%= pkg.name %>.min.js'
                 }
             }
+        },
+
+        // connect server
+        connect: {
+            server: {
+                options: {
+                    port: 9000,
+                    base: '.',
+                    keepalive: true
+                }
+            }
         }
+
     });
 
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-    
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
     /*
     grunt.registerTask('all_checks', 'lint all_tests');
     grunt.registerTask('all_tests', 'server qunit');
