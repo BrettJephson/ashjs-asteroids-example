@@ -1,8 +1,8 @@
 require([
-    'brejep/fillsnfixes',
+    //'brejep/fillsnfixes',
     'brejep/keypoll',
     'game/asteroids'
-], function(Fixes, KeyPoll, Asteroids) {
+], function(/*Fixes, */KeyPoll, Asteroids) {
         'use strict';
 
         function AsteroidsApp() {
@@ -12,7 +12,7 @@ require([
             // Game initialisation
             this.initialise = function() {
                 // some polyfills and additions to base javascript classes
-                Fixes.initialise();
+                //Fixes.initialise();
 
                 var canvasElem = createCanvas();
                 var gamewrapper = document.getElementById('game_wrapper');
