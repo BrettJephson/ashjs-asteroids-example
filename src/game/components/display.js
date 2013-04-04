@@ -5,5 +5,5 @@ define(['ash'], function (Ash) {
         }
     });
 
-    return Bullet;
+    return Display;
 });
