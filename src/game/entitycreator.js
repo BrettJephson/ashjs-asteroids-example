@@ -11,7 +11,8 @@ define([
     'game/components/display',
     'game/graphics/asteroidview',
     'game/graphics/spaceshipview',
-    'game/graphics/bulletview'
+    'game/graphics/bulletview',
+    'brejep/keyboard'
 ], function (
     Ash,
     Asteroid,
@@ -25,7 +26,8 @@ define([
     Display,
     AsteroidView,
     SpaceshipView,
-    BulletView
+    BulletView,
+    Keyboard
 ) {
 
     var EntityCreator = function (game, graphics) {

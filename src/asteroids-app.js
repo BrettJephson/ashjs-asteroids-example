@@ -18,8 +18,8 @@ require([
                 var gamewrapper = document.getElementById('game_wrapper');
                 gamewrapper.appendChild(canvasElem);
 
-                // init keyboard
-                KeyPoll.initialise(gamewrapper);
+                // init keyboard poll
+                KeyPoll.initialise(window);
 
                 var asteroids = new Asteroids();
                 asteroids.initialise(canvasElem);
