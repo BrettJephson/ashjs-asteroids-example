@@ -24,7 +24,7 @@ require([
 
                 // init Stats
                 var stats = new Stats();
-                stats.setMode(1); // 0: fps, 1: ms
+                stats.setMode(0); // 0: fps, 1: ms
 
                 // Align top-left
                 stats.domElement.style.position = 'absolute';
@@ -33,7 +33,7 @@ require([
 
                 document.body.appendChild( stats.domElement );
 
-                var asteroids = new Asteroids(canvasElem);
+                var asteroids = new Asteroids(canvasElem, stats);
                 asteroids.start();
             };
 

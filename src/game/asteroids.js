@@ -35,7 +35,7 @@ define([
         gameState: null,
         tickProvider: null,
 
-        constructor: function (canvas) {
+        constructor: function (canvas, stats) {
             var canvasContext = canvas.getContext('2d');
 
             this.width = canvas.width;
@@ -75,7 +75,7 @@ define([
                 new RenderSystem(canvasContext),
                 SystemPriorities.render
            );
-            this.tickProvider = new TickProvider();
+            this.tickProvider = new TickProvider(stats);
         },
 
         start: function () {
