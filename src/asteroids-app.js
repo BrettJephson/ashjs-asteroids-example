@@ -1,8 +1,9 @@
 require([
     'brejep/fillsnfixes',
     'brejep/keypoll',
-    'game/asteroids'
-], function(Fixes, KeyPoll, Asteroids) {
+    'game/asteroids',
+    'Stats'
+], function(Fixes, KeyPoll, Asteroids, Stats) {
         'use strict';
 
         function AsteroidsApp() {
@@ -21,8 +22,18 @@ require([
                 // init keyboard poll
                 KeyPoll.initialise(window);
 
-                var asteroids = new Asteroids();
-                asteroids.initialise(canvasElem);
+                // init Stats
+                var stats = new Stats();
+                stats.setMode(1); // 0: fps, 1: ms
+
+                // Align top-left
+                stats.domElement.style.position = 'absolute';
+                stats.domElement.style.left = '0px';
+                stats.domElement.style.top = '0px';
+
+                document.body.appendChild( stats.domElement );
+
+                var asteroids = new Asteroids(canvasElem);
                 asteroids.start();
             };
 
