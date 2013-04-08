@@ -22,6 +22,11 @@ module.exports = function (grunt) {
                 options: {
                     mainConfigFile: "build.js"
                 }
+            },
+            minified: {
+                options: {
+                    mainConfigFile: "build.min.js"
+                }
             }
         },
 
@@ -41,5 +46,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.registerTask('default', ['requirejs']);
+
+    grunt.registerTask('default', ['jshint', 'requirejs']);
 };
