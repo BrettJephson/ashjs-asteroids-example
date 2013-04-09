@@ -3584,7 +3584,7 @@ require([
                 Fixes.initialise();
 
                 var canvasElem = createCanvas();
-                var gamewrapper = document.getElementById('game_wrapper');
+                var gamewrapper = document.getElementById('game-wrapper');
                 gamewrapper.appendChild(canvasElem);
 
                 // init keyboard poll
@@ -3599,7 +3599,7 @@ require([
                 stats.domElement.style.left = '0px';
                 stats.domElement.style.top = '0px';
 
-                document.body.appendChild( stats.domElement );
+                gamewrapper.appendChild( stats.domElement );
 
                 var asteroids = new Asteroids(canvasElem, stats);
                 asteroids.start();
