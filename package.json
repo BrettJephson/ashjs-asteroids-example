@@ -1,7 +1,7 @@
 {
     "name": "ashteroids",
     "version": "0.1.0",
-    "description": "Example game using Ash framework & CreateJS",
+    "description": "Example game using Ash framework",
     "private": true,
     "dependencies" : {
         "grunt": "~0.4.0",
