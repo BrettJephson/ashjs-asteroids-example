@@ -1,4 +1,7 @@
 # Ashteroids.js
+
+![Ashteroids](screen01.png)
+
 A simple asteroids game using [Ash.js](https://github.com/brejep/ash-js), a JavaScript port of [Ash Framework](http://ashframework.org)
 
 ## Running
