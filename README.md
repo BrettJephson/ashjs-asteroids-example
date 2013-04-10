@@ -20,14 +20,16 @@ All JavaScript files, including the Ash Framework, will be concatenated into 1 f
 * `grunt` will run jshint & build the game files. The results can be found at folder `build` (both minified & non-minified version)
 
 ## Running the *Development Version*
-You can run the non build-and-minified version of the game.
+Open `ashteroids.dev.html` and you will run the non build-and-minified version of the game.
+Running the development version allows you to debug the source codes easily or see any changes immediately without having to build.
 
-### Dependencies
-Same as above (build)
+## Grunt command lines
+These are the list of grunt commands:
 
-### Command lines
-* `grunt connect` to start a local webserver.
-* From your browser, go to `http://localhost:9000/ashteroids.dev.html`.
+* `grunt connect` to start a local webserver (using port 9000 by default). From your browser, you can go to `http://localhost:9000/ashteroids.dev.html`.
+* `grunt jshint` to jshint all JS files
+* `grunt requirejs:compile` to build the non-minified version
+* `grunt requirejs:minified` to build the minified version
 
 ## License
 MIT License
