@@ -1,15 +1,16 @@
-define( "game/nodes/spaceshipcollision",
-    [ "ash/node", "game/components/spaceship", "game/components/position" ],
-    function( Node, Spaceship, Position ) {
-        function SpaceshipCollision() {
-            Object.extend( SpaceshipCollision.prototype, Node.prototype );
-        }
-        SpaceshipCollision.prototype.spaceship = null;
-        SpaceshipCollision.prototype.position = null;
-        SpaceshipCollision.prototype.types = {
+define([
+    'ash', 'game/components/spaceship', 'game/components/position'
+], function (Ash, Spaceship, Position) {
+    var SpaceshipCollision = Ash.Node.extend({
+        spaceship: null,
+        position: null,
+        types: {
             spaceship : Spaceship,
             position : Position
-        };
-        return SpaceshipCollision;
-    }
-);
+        },
+
+        constructor: function () { }
+    });
+
+    return SpaceshipCollision;
+});

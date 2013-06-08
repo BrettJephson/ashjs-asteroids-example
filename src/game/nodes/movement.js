@@ -1,15 +1,16 @@
-define( "game/nodes/movement",
-    [ "ash/node", "game/components/position", "game/components/motion" ],
-    function( Node, Position, Motion ) {
-        function Movement() {
-            Object.extend( Movement.prototype, Node.prototype );
-        }
-        Movement.prototype.position = null;
-        Movement.prototype.motion = null;
-        Movement.prototype.types = {
+define([
+    'ash', 'game/components/position', 'game/components/motion'
+], function (Ash, Position, Motion) {
+    var Movement = Ash.Node.extend({
+        position: null,
+        motion: null,
+        types: {
             position : Position,
             motion : Motion
-        };
-        return Movement;
-    }
-);
+        },
+
+        constructor: function () { }
+    });
+
+    return Movement;
+});

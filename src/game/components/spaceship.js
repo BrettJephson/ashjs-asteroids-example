@@ -1,6 +1,7 @@
-define( "game/components/spaceship",
-    function() {
-        function Spaceship() {}
-        return Spaceship;
-    }
-);
+define(['ash'], function (Ash) {
+    var Spaceship = Ash.Class.extend({
+        constructor: function () { }
+    });
+
+    return Spaceship;
+});

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Ashteroids with Ash-js</title>
+        <style>
+            body {
+                margin: 20px;
+                font-family: "Verdana, Geneva, sans-serif";
+            }
+
+            #container {
+                width: 800px;
+                margin: 0px auto;
+            }
+
+            #game-wrapper {
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <!-- game writes dom elements into this wrapper -->
+            <div id="game-wrapper"></div>
+            <p>
+                <strong>Arrow keys</strong>: movement -
+                <strong>Z</strong>: fire
+            </p>
+        </div>
+
+        <script src="build/ashteroids.min.js"></script>
+    </body>
+</html>

@@ -1,15 +1,16 @@
-define( "game/nodes/bulletcollision",
-    [ "ash/node", "game/components/bullet", "game/components/position" ],
-    function( Node, Bullet, Position ) {
-        function BulletCollision() {
-            Object.extend( BulletCollision.prototype, Node.prototype );
-        }
-        BulletCollision.prototype.bullet = null;
-        BulletCollision.prototype.position = null;
-        BulletCollision.prototype.types = {
+define([
+    'ash', 'game/components/bullet', 'game/components/position'
+], function (Ash, Bullet, Position) {
+    var BulletCollision = Ash.Node.extend({
+        bullet: null,
+        position: null,
+        types: {
             bullet : Bullet,
             position : Position
-        };
-        return BulletCollision;
-    }
-);
+        },
+
+        constructor: function () { }
+    });
+
+    return BulletCollision;
+});

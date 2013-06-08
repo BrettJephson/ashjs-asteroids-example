@@ -1,36 +1,51 @@
 module.exports = function (grunt) {
-    'use strict';
+
+    // project config
     grunt.initConfig({
+        // get metadata from package
         pkg: grunt.file.readJSON('package.json'),
+
         jshint: {
-            files: [ 'Gruntfile.js', 'src/**/*.js' ],
+            files: [
+                'Gruntfile.js', 'build.js',
+                'src/**/*.js', 'lib/brejep/*.js'
+            ],
             options: {
                 browser: true,
                 white: false
             }
         },
+
+        // requirejs config
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: '',
-                    name: 'build/asteroids-build',
-                    optimize: 'uglify',
-                    findNestedDependencies: true,
-                    paths: {
-                        'brejep': 'lib/brejep',
-                        'libs/signals': 'lib/vendor/signals.min',
-                        'almond': 'lib/vendor/almond',
-                        'game' : 'src/game'
-                    },
-                    out: 'build/asteroids-game.js'
+                    mainConfigFile: "build.js"
+                }
+            },
+            minified: {
+                options: {
+                    mainConfigFile: "build.min.js"
+                }
+            }
+        },
+
+        // connect server
+        connect: {
+            server: {
+                options: {
+                    port: 9000,
+                    base: '.',
+                    keepalive: true
                 }
             }
         }
+
     });
-    
-    grunt.registerTask('test', ['jshint']);
-    grunt.registerTask('default', ['jshint', 'requirejs']);
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
+    grunt.registerTask('default', ['jshint', 'requirejs']);
 };

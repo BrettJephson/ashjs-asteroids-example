@@ -1,4 +1,4 @@
 .DS_Store
+*.fdproj
 .idea
 node_modules
-asteroids-game.js

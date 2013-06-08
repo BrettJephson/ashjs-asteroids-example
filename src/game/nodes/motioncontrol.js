@@ -1,17 +1,19 @@
-define( "game/nodes/motioncontrol",
-    [ "ash/node", "game/components/motioncontrols", "game/components/position", "game/components/motion" ],
-    function( Node, MotionControls, Position, Motion ) {
-        function MotionControl() {
-            Object.extend( MotionControl.prototype, Node.prototype );
-        }
-        MotionControl.prototype.control = null;
-        MotionControl.prototype.position = null;
-        MotionControl.prototype.motion = null;
-        MotionControl.prototype.types = {
+define([
+    'ash', 'game/components/motioncontrols', 'game/components/position',
+    'game/components/motion'
+], function (Ash, MotionControls, Position, Motion) {
+    var MotionControl = Ash.Node.extend({
+        control: null,
+        position: null,
+        motion: null,
+        types: {
             control : MotionControls,
             position : Position,
             motion : Motion
-        };
-        return MotionControl;
-    }
-);
+        },
+
+        constructor: function () { }
+    });
+
+    return MotionControl;
+});
