@@ -1,13 +1,8 @@
 define([
     'ash', 'game/components/bullet'
 ], function(Ash, Bullet ) {
-    var BulletAge = Ash.Node.extend({
-        bullet: null,
-        types: {
-            bullet : Bullet
-        },
-
-        constructor: function () { }
+    var BulletAge = Ash.Node.create({
+        bullet : Bullet
     });
 
     return BulletAge;

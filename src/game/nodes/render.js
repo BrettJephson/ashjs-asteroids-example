@@ -1,15 +1,9 @@
 define([
     'ash', 'game/components/position', 'game/components/display'
 ], function (Ash, Position, Display ) {
-    var Render = Ash.Node.extend({
-        position: null,
-        display: null,
-        types: {
-            position : Position,
-            display : Display
-        },
-
-        constructor: function () { }
+    var Render = Ash.Node.create({
+        position : Position,
+        display : Display
     });
 
     return Render;
