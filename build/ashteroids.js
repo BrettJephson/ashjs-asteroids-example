@@ -2330,9 +2330,51 @@ define('ash-core/node',[
         entity: null,
         previous: null,
         next: null,
-        
+
         constructor: function () { }
     });
+
+    /**
+    * A simpler way to create a node.
+    *
+    * Example: creating a node for component classes Point &amp; energy:
+    *
+    * var PlayerNode = Ash.Node.create({
+    *   point: Point,
+    *   energy: Energy
+    * });
+    *
+    * This is the simpler version from:
+    *
+    * var PlayerNode = Ash.Node.extend({
+    *   point: null,
+    *   energy: null,
+    *
+    *   types: {
+    *     point: Point,
+    *     energy: Energy
+    *   }
+    * });
+    */
+    Node.create = function (schema) {
+        var processedSchema = {
+            types: {},
+            constructor: function () { }
+        };
+
+        // process schema
+        for (var propertyName in schema) {
+            if (schema.hasOwnProperty(propertyName)) {
+                var propertyType = schema[propertyName];
+                if (propertyType) {
+                    processedSchema.types[propertyName] = propertyType;
+                }
+                processedSchema[propertyName] = null;
+            }
+        }
+
+        return Node.extend(processedSchema);
+    };
 
     return Node;
 });
@@ -2379,7 +2421,7 @@ define('ash-core/system',[
  */
 define('ash/ash-framework',['require','ash-core/engine','ash-core/componentmatchingfamily','ash-core/entity','ash-core/entitylist','ash-core/family','ash-core/node','ash-core/nodelist','ash-core/nodepool','ash-core/system','ash-core/systemlist','brejep/class','signals'],function (require) {
     var core = {
-        VERSION: '0.1.0'
+        VERSION: '0.2.0'
     };
 
     core.Engine = require('ash-core/engine');
@@ -2478,15 +2520,9 @@ define('game/components/position',['ash', 'brejep/point'], function (Ash, Point)
 define('game/nodes/spaceshipcollision',[
     'ash', 'game/components/spaceship', 'game/components/position'
 ], function (Ash, Spaceship, Position) {
-    var SpaceshipCollision = Ash.Node.extend({
-        spaceship: null,
-        position: null,
-        types: {
-            spaceship : Spaceship,
-            position : Position
-        },
-
-        constructor: function () { }
+    var SpaceshipCollision = Ash.Node.create({
+        spaceship : Spaceship,
+        position : Position
     });
 
     return SpaceshipCollision;
@@ -2503,17 +2539,9 @@ define('game/components/asteroid',['ash'], function (Ash) {
 define('game/nodes/asteroidcollision',[
     'ash', 'game/components/asteroid', 'game/components/position'
 ], function (Ash, Asteroid, Position) {
-    var AsteroidCollision = Ash.Node.extend({
-        asteroid: null,
-        position: null,
-
-        ///TODO come back to this inelegant bit
-        types: {
-            asteroid : Asteroid,
-            position : Position
-        },
-
-        constructor: function () { }
+    var AsteroidCollision = Ash.Node.create({
+        asteroid : Asteroid,
+        position : Position
     });
 
     return AsteroidCollision;
@@ -2532,15 +2560,9 @@ define('game/components/bullet',['ash'], function (Ash) {
 define('game/nodes/bulletcollision',[
     'ash', 'game/components/bullet', 'game/components/position'
 ], function (Ash, Bullet, Position) {
-    var BulletCollision = Ash.Node.extend({
-        bullet: null,
-        position: null,
-        types: {
-            bullet : Bullet,
-            position : Position
-        },
-
-        constructor: function () { }
+    var BulletCollision = Ash.Node.create({
+        bullet : Bullet,
+        position : Position
     });
 
     return BulletCollision;
@@ -2662,17 +2684,10 @@ define('game/nodes/motioncontrol',[
     'ash', 'game/components/motioncontrols', 'game/components/position',
     'game/components/motion'
 ], function (Ash, MotionControls, Position, Motion) {
-    var MotionControl = Ash.Node.extend({
-        control: null,
-        position: null,
-        motion: null,
-        types: {
-            control : MotionControls,
-            position : Position,
-            motion : Motion
-        },
-
-        constructor: function () { }
+    var MotionControl = Ash.Node.create({
+        control : MotionControls,
+        position : Position,
+        motion : Motion
     });
 
     return MotionControl;
@@ -2752,17 +2767,10 @@ define('game/components/gun',['ash', 'brejep/point'], function (Ash, Point) {
 define('game/nodes/guncontrol',[
     'ash', 'game/components/guncontrols', 'game/components/gun', 'game/components/position'
 ], function (Ash, GunControls, Gun, Position) {
-    var GunControl = Ash.Node.extend({
-        control: null,
-        gun: null,
-        position: null,
-        types: {
-            control : GunControls,
-            gun : Gun,
-            position : Position
-        },
-
-        constructor: function () { }
+    var GunControl = Ash.Node.create({
+        control : GunControls,
+        gun : Gun,
+        position : Position
     });
 
     return GunControl;
@@ -2816,13 +2824,8 @@ define('game/systems/guncontrolsystem',[
 define('game/nodes/bulletage',[
     'ash', 'game/components/bullet'
 ], function(Ash, Bullet ) {
-    var BulletAge = Ash.Node.extend({
-        bullet: null,
-        types: {
-            bullet : Bullet
-        },
-
-        constructor: function () { }
+    var BulletAge = Ash.Node.create({
+        bullet : Bullet
     });
 
     return BulletAge;
@@ -2868,15 +2871,9 @@ define('game/systems/bulletagesystem',[
 define('game/nodes/movement',[
     'ash', 'game/components/position', 'game/components/motion'
 ], function (Ash, Position, Motion) {
-    var Movement = Ash.Node.extend({
-        position: null,
-        motion: null,
-        types: {
-            position : Position,
-            motion : Motion
-        },
-
-        constructor: function () { }
+    var Movement = Ash.Node.create({
+        position : Position,
+        motion : Motion
     });
 
     return Movement;
@@ -3031,15 +3028,9 @@ define('game/components/display',['ash'], function (Ash) {
 define('game/nodes/render',[
     'ash', 'game/components/position', 'game/components/display'
 ], function (Ash, Position, Display ) {
-    var Render = Ash.Node.extend({
-        position: null,
-        display: null,
-        types: {
-            position : Position,
-            display : Display
-        },
-
-        constructor: function () { }
+    var Render = Ash.Node.create({
+        position : Position,
+        display : Display
     });
 
     return Render;
